@@ -27,11 +27,11 @@
    - Identifier: `autopilot.contextSize`
  - Model Name - This is the name of the Ollama model that will be interacted with to perform generation requests.
    - Type: `string`
-   - Default value: `codegemma`
+   - Default value: `llama3`
    - Identifer: `autopilot.modelName`
  - Prompt Type - This is the format of the prompt that will be generated, which is required when interacting with LLMs such as `codegemma` with nonstandard formatting.
    - Type: `enum` (of values `generic`, `codegemma`)
-   - Default value: `codegemma`
+   - Default value: `generic`
    - Identifier: `autopilot.promptType`
  - URL - This is the API endpoint created by Ollama on your computer or on another server. This notably *includes* the API path `/api/generate`.
    - Type: `string`

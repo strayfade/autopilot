@@ -43,12 +43,12 @@
                 },
                 "autopilot.modelName": {
                     "type": "string",
-                    "default": "codegemma",
+                    "default": "llama3",
                     "description": "The name of the generative LLM model to use (available models at https://ollama.com/library)"
                 },
                 "autopilot.promptType": {
                     "type": "string",
-                    "default": "codegemma",
+                    "default": "generic",
                     "enum": ["generic", "codegemma"],
                     "description": "The format to generate the LLM prompt in",
                     "enumDescriptions": [
