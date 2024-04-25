@@ -1,13 +1,11 @@
 # autopilot
 
-**autopilot** is an open-source, free alternative to GitHub Copilot. It is provided as an extension for Visual Studio Code.
+**autopilot** is a free AI code generation extension for Visual Studio Code.
 
  - Cross-platform compatibility
  - Incredibly fast
  - Understands context
   
-> ### Disclaimer
-> 
 > **autopilot** is a proof of concept. There are many issues currently, and this is not meant to be a definitive replacement for GitHub Copilot.
 
 ### Usage
