@@ -1,0 +1,61 @@
+{
+    "name": "autopilot",
+    "displayName": "autopilot",
+    "description": "A free alternative to Copilot for Visual Studio Code",
+    "version": "1.0.0",
+    "engines": {
+        "vscode": "^1.88.0"
+    },
+    "categories": [
+        "Other"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/strayfade/autopilot.git"
+    },
+    "activationEvents": [],
+    "main": "./extension.js",
+    "contributes": {
+        "configuration": {
+            "title": "Autopilot",
+            "properties": {
+                "autopilot.contextSize": {
+                    "type": "integer",
+                    "default": 10,
+                    "description": "The number of lines before and after the cursor to include in the prompt context"
+                },
+                "autopilot.modelName": {
+                    "type": "string",
+                    "default": "llama3",
+                    "description": "The name of the generative LLM model to use (available models at https://ollama.com/library)"
+                },
+                "autopilot.url": {
+                    "type": "string",
+                    "default": "http://localhost:11434/api/generate",
+                    "description": "The API endpoint created by Ollama"
+                }
+            }
+        },
+        "commands": [{
+            "command": "autopilot.run",
+            "title": "Autopilot: Generate code"
+        }]
+    },
+    "scripts": {
+        "lint": "eslint .",
+        "pretest": "npm run lint",
+        "test": "vscode-test"
+    },
+    "devDependencies": {
+        "@types/mocha": "^10.0.6",
+        "@types/node": "18.x",
+        "@types/vscode": "^1.88.0",
+        "@vscode/test-cli": "^0.0.8",
+        "@vscode/test-electron": "^2.3.9",
+        "eslint": "^8.57.0",
+        "typescript": "^5.3.3"
+    },
+    "dependencies": {
+        "axios": "^1.6.8"
+    }
+}
