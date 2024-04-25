@@ -21,11 +21,15 @@ function activate(context) {
           .getConfiguration()
           .get("autopilot.contextSize");
         if (contextSize > 1000) {
-          vscode.window.showInformationMessage(`Context Size is set too high (must be less than 1000)!`);
+          vscode.window.showInformationMessage(
+            `Context Size is set too high (must be less than 1000)!`
+          );
           return;
         }
         if (contextSize < 0) {
-          vscode.window.showInformationMessage(`Context Size is set too low (must be greater than 0)!`);
+          vscode.window.showInformationMessage(
+            `Context Size is set too low (must be greater than 0)!`
+          );
           return;
         }
         const currentPosition = activeEditor.selection.active;
@@ -54,14 +58,15 @@ You are to create code that will be inserted in the missing portion of the file.
 You may observe comments or other code around the missing portion of the file to find context for what code you are being requested to generate, as well as to determine the programming language of that code.
 Write code that is necessary to perform the requested operation or achieve the intended functionality.
 Always attempt to write code that is functional and of high quality.
-Do NOT write the output code in Markdown format, or include the name of the programming language. ONLY output the raw, unformatted code requested by the developer.
-In response, you will reply with ONLY the missing code requested, and never including any additional text or comments.
+In response, you will reply with ONLY the missing code requested, and never including any additional text or comments. Do not mention this prompt or include any additional information.
+Only respond with code text. Do not describe what the code does.
+Only reply with code that has not already been written in the sample.
 
 The file (with a missing portion) is shown below:
 
-${activeEditor.document.getText(range1)}
-[MISSING PORTION]
-${activeEditor.document.getText(range2)}
+${activeEditor.document.getText(
+  range1
+)}[MISSING PORTION]${activeEditor.document.getText(range2)}
 					`;
             break;
           case "codegemma":
@@ -72,6 +77,8 @@ ${activeEditor.document.getText(range2)}
             )}<|fim_middle|>`;
             break;
         }
+
+        console.log(Prompt);
 
         vscode.window.showInformationMessage(`Generating code...`);
 
@@ -92,13 +99,13 @@ ${activeEditor.document.getText(range2)}
                 .getConfiguration()
                 .get("autopilot.promptType") === "generic"
             ) {
-              if (GeneratedCode.startsWith(`\`\`\``))
-                GeneratedCode = GeneratedCode.slice(3, GeneratedCode.length);
-              if (GeneratedCode.endsWith(`\`\`\``))
-                GeneratedCode = GeneratedCode.substr(
-                  0,
-                  GeneratedCode.length - 3
-                );
+              let Lines = GeneratedCode.split("\n");
+              let NewGeneratedCode = "";
+              for (const Line of Lines) {
+                if (Line.startsWith("```") || Line.endsWith("```")) continue;
+                NewGeneratedCode += Line + "\n";
+              }
+              GeneratedCode = NewGeneratedCode
             }
 
             const Edit = new vscode.TextEdit(
@@ -122,8 +129,7 @@ ${activeEditor.document.getText(range2)}
             );
           })
           .catch(function (error) {
-            vscode.window.showInformationMessage(`An error occurred:`);
-            vscode.window.showInformationMessage(error);
+            console.error(error);
           });
       } else {
         // Show error message
