@@ -49,7 +49,7 @@ function activate(context) {
 
         let Prompt = ``;
         switch (
-          vscode.workspace.getConfiguration().get("autopilot.promptType")
+        vscode.workspace.getConfiguration().get("autopilot.promptType")
         ) {
           case "generic":
             Prompt = `
@@ -65,8 +65,8 @@ Only reply with code that has not already been written in the sample.
 The file (with a missing portion) is shown below:
 
 ${activeEditor.document.getText(
-  range1
-)}[MISSING PORTION]${activeEditor.document.getText(range2)}
+              range1
+            )}[MISSING PORTION]${activeEditor.document.getText(range2)}
 					`;
             break;
           case "codegemma":
@@ -77,8 +77,6 @@ ${activeEditor.document.getText(
             )}<|fim_middle|>`;
             break;
         }
-
-        console.log(Prompt);
 
         vscode.window.showInformationMessage(`Generating code...`);
 
@@ -105,7 +103,7 @@ ${activeEditor.document.getText(
                 if (Line.startsWith("```") || Line.endsWith("```")) continue;
                 NewGeneratedCode += Line + "\n";
               }
-              GeneratedCode = NewGeneratedCode
+              GeneratedCode = NewGeneratedCode;
             }
 
             const Edit = new vscode.TextEdit(
@@ -123,8 +121,7 @@ ${activeEditor.document.getText(
 
             // Show the completion message
             vscode.window.showInformationMessage(
-              `Added ${GeneratedCode.split("\n").length} line${
-                GeneratedCode.split("\n").length == 1 ? "" : "s"
+              `Added ${GeneratedCode.split("\n").length} line${GeneratedCode.split("\n").length == 1 ? "" : "s"
               } of code!`
             );
           })
@@ -142,7 +139,7 @@ ${activeEditor.document.getText(
 }
 
 // Extension deactivated
-function deactivate() {}
+function deactivate() { }
 
 module.exports = {
   activate,

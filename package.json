@@ -1,88 +1,93 @@
 {
-    "name": "autopilot",
-    "displayName": "autopilot",
-    "description": "Self-hosted AI code generation for Visual Studio Code",
-    "version": "1.0.1",
-    "publisher": "strayfade",
-    "icon": "assets/icon.png",
-    "galleryBanner": {
-      "color": "#636363",
-      "theme": "dark"
-    },
-    "engines": {
-        "vscode": "^1.88.0"
-    },
-    "categories": [
-        "AI",
-        "Chat",
-        "Snippets",
-        "Other"
-    ],
-    "keywords": [
-      "ai",
-      "assistant",
-      "self-hosted",
-      "generative",
-      "coding",
-      "snippets"
-    ],
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/strayfade/autopilot.git"
-    },
-    "activationEvents": [],
-    "main": "./extension.js",
-    "contributes": {
-        "configuration": {
-            "title": "Autopilot",
-            "properties": {
-                "autopilot.contextSize": {
-                    "type": "integer",
-                    "default": 50,
-                    "description": "The number of lines before and after the cursor to include in the prompt context"
-                },
-                "autopilot.modelName": {
-                    "type": "string",
-                    "default": "llama3",
-                    "description": "The name of the generative LLM model to use (available models at https://ollama.com/library)"
-                },
-                "autopilot.promptType": {
-                    "type": "string",
-                    "default": "generic",
-                    "enum": ["generic", "codegemma"],
-                    "description": "The format to generate the LLM prompt in",
-                    "enumDescriptions": [
-                    "Formats the prompt automatically for compatibility with the widest array of language-processing LLMs",
-                    "Formats the prompt for use with the codegemma code-generation LLM."
-                    ]
-                },
-                "autopilot.url": {
-                    "type": "string",
-                    "default": "http://localhost:11434/api/generate",
-                    "description": "The API endpoint created by Ollama"
-                }
-            }
+  "name": "autopilot",
+  "displayName": "autopilot",
+  "description": "Self-hosted AI code generation for Visual Studio Code",
+  "version": "1.0.1",
+  "publisher": "strayfade",
+  "icon": "assets/icon.png",
+  "galleryBanner": {
+    "color": "#636363",
+    "theme": "dark"
+  },
+  "engines": {
+    "vscode": "^1.88.0"
+  },
+  "categories": [
+    "AI",
+    "Chat",
+    "Snippets",
+    "Other"
+  ],
+  "keywords": [
+    "ai",
+    "assistant",
+    "self-hosted",
+    "generative",
+    "coding",
+    "snippets"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/strayfade/autopilot.git"
+  },
+  "activationEvents": [],
+  "main": "./extension.js",
+  "contributes": {
+    "configuration": {
+      "title": "Autopilot",
+      "properties": {
+        "autopilot.contextSize": {
+          "type": "integer",
+          "default": 50,
+          "description": "The number of lines before and after the cursor to include in the prompt context"
         },
-        "commands": [{
-            "command": "autopilot.run",
-            "title": "Autopilot: Generate code"
-        }]
+        "autopilot.modelName": {
+          "type": "string",
+          "default": "llama3",
+          "description": "The name of the generative LLM model to use (available models at https://ollama.com/library)"
+        },
+        "autopilot.promptType": {
+          "type": "string",
+          "default": "generic",
+          "enum": [
+            "generic",
+            "codegemma"
+          ],
+          "description": "The format to generate the LLM prompt in",
+          "enumDescriptions": [
+            "Formats the prompt automatically for compatibility with the widest array of language-processing LLMs",
+            "Formats the prompt for use with the codegemma code-generation LLM."
+          ]
+        },
+        "autopilot.url": {
+          "type": "string",
+          "default": "http://localhost:11434/api/generate",
+          "description": "The API endpoint created by Ollama"
+        }
+      }
     },
-    "scripts": {
-        "lint": "eslint .",
-        "pretest": "npm run lint",
-        "test": "vscode-test"
-    },
-    "devDependencies": {
-        "@types/mocha": "^10.0.6",
-        "@types/node": "18.x",
-        "@types/vscode": "^1.88.0",
-        "@vscode/test-cli": "^0.0.8",
-        "@vscode/test-electron": "^2.3.9",
-        "eslint": "^8.57.0",
-        "typescript": "^5.3.3"
-    },
-    "dependencies": {
-        "axios": "^1.6.8"
-    }
+    "commands": [
+      {
+        "command": "autopilot.run",
+        "title": "Autopilot: Generate code"
+      }
+    ]
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "pretest": "npm run lint",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.6",
+    "@types/node": "18.x",
+    "@types/vscode": "^1.88.0",
+    "@vscode/test-cli": "^0.0.8",
+    "@vscode/test-electron": "^2.3.9",
+    "eslint": "^8.57.0",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "axios": "^1.6.8"
+  }
 }
