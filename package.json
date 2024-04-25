@@ -2,12 +2,29 @@
     "name": "autopilot",
     "displayName": "autopilot",
     "description": "Self-hosted AI code generation for Visual Studio Code",
-    "version": "1.0.0",
+    "version": "1.0.1",
+    "publisher": "strayfade",
+    "icon": "assets/icon.png",
+    "galleryBanner": {
+      "color": "#636363",
+      "theme": "dark"
+    },
     "engines": {
         "vscode": "^1.88.0"
     },
     "categories": [
+        "AI",
+        "Chat",
+        "Snippets",
         "Other"
+    ],
+    "keywords": [
+      "ai",
+      "assistant",
+      "self-hosted",
+      "generative",
+      "coding",
+      "snippets"
     ],
     "repository": {
         "type": "git",
@@ -21,13 +38,23 @@
             "properties": {
                 "autopilot.contextSize": {
                     "type": "integer",
-                    "default": 10,
+                    "default": 50,
                     "description": "The number of lines before and after the cursor to include in the prompt context"
                 },
                 "autopilot.modelName": {
                     "type": "string",
-                    "default": "llama3",
+                    "default": "codegemma",
                     "description": "The name of the generative LLM model to use (available models at https://ollama.com/library)"
+                },
+                "autopilot.promptType": {
+                    "type": "string",
+                    "default": "codegemma",
+                    "enum": ["generic", "codegemma"],
+                    "description": "The format to generate the LLM prompt in",
+                    "enumDescriptions": [
+                    "Formats the prompt automatically for compatibility with the widest array of language-processing LLMs",
+                    "Formats the prompt for use with the codegemma code-generation LLM."
+                    ]
                 },
                 "autopilot.url": {
                     "type": "string",
