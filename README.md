@@ -10,6 +10,8 @@
 
 # Usage
 
+This project utilizes the [Ollama](https://github.com/ollama/ollama) self-hosted API for managing and communicating with large language models.
+
 1. Download and install Ollama for your operating system:
     - [Windows](https://ollama.com/download/OllamaSetup.exe)
     - [MacOS](https://ollama.com/download/Ollama-darwin.zip)
