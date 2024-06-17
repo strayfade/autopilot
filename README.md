@@ -1,6 +1,6 @@
 # autopilot
 
-**autopilot** is a free AI code generation extension for Visual Studio Code.
+**autopilot** is a free, local AI code generation extension for Visual Studio Code.
 
  - Cross-platform compatibility
  - Incredibly fast
