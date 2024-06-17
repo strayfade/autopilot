@@ -6,7 +6,7 @@
  - Incredibly fast
  - Understands context
   
-> **autopilot** is a proof of concept. There are many issues currently, and this is not meant to be a definitive replacement for GitHub Copilot.
+> **autopilot** is a proof of concept.
 
 # Usage
 
